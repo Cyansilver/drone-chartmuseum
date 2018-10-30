@@ -8,7 +8,9 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"crypto/tls"
 	"strings"
+	"time"
 )
 
 const (
@@ -21,6 +23,13 @@ type (
 		// Base URL for API requests. BaseURL should
 		// always be specified with a trailing slash.
 		BaseURL *url.URL
+
+		//basic authentication username
+		Username string
+
+		//basic authentication password
+		Password string
+
 		// User agent used when communicating with the ChartMuseum API.
 		UserAgent string
 
@@ -49,7 +58,7 @@ type (
 // NewClient returns a new ChartMuseum API client with provided base URL
 // If trailing slash is missing from base URL, one is added automatically.
 // If a nil httpClient is provided, http.DefaultClient will be used.
-func NewClient(baseURL string, httpClient *http.Client) (*Client, error) {
+func NewClient(baseURL string, httpClient *http.Client, username string, password string, skipTlsVerify bool) (*Client, error) {
 	if baseURL == "" {
 		return nil, fmt.Errorf("ChartMuseum API - base URL can not be blank")
 	}
@@ -61,11 +70,19 @@ func NewClient(baseURL string, httpClient *http.Client) (*Client, error) {
 		baseEndpoint.Path += "/"
 	}
 	if httpClient == nil {
-		httpClient = http.DefaultClient
+		var tr = &http.Transport{
+            TLSClientConfig: &tls.Config{InsecureSkipVerify: skipTlsVerify},
+		}
+	    httpClient= &http.Client{
+	      Timeout: time.Second * 5,
+	      Transport: tr,
+	    }
 	}
 
 	c := &Client{httpClient: httpClient, BaseURL: baseEndpoint, UserAgent: userAgent}
 	c.BaseURL = baseEndpoint
+	c.Username = username
+	c.Password = password
 	c.common.client = c
 	c.ChartService = (*ChartService)(&c.common)
 
@@ -92,6 +109,10 @@ func (c *Client) NewUploadRequest(urlStr string, reader io.Reader, size int64, m
 
 	req.Header.Set("Content-Type", mediaType)
 	req.Header.Set("User-Agent", c.UserAgent)
+	if len(c.Username) > 0 && len(c.Password) > 0 {
+		req.SetBasicAuth(c.Username, c.Password)
+	}
+
 	return req, nil
 }
 

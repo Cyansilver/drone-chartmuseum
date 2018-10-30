@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"code.gitea.io/git"
-	cm "github.com/honestbee/drone-chartmuseum/pkg/cmclient"
-	"github.com/honestbee/drone-chartmuseum/pkg/util"
+	cm "drone-chartmuseum/pkg/cmclient"
+	"drone-chartmuseum/pkg/util"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"k8s.io/helm/pkg/chartutil"
@@ -21,6 +21,9 @@ type (
 	// Config struct map with drone plugin parameters
 	Config struct {
 		RepoURL          string `json:"repo_url,omitempty"`
+		Username         string `json:"username,omitempty"`
+		Password         string `json:"password,omitempty"`
+		SkipTlsVerify    bool   `json:"skip_tls_verify,omitempty"`
 		ChartPath        string `json:"chart_path,omitempty"`
 		ChartsDir        string `json:"charts_dir,omitempty"`
 		SaveDir          string `json:"save_dir,omitempty"`
@@ -49,7 +52,7 @@ type (
 func (p *Plugin) ValidateConfig() error {
 	var err error
 	// validate ChartMuseum baseURL
-	if p.Client, err = cm.NewClient(p.Config.RepoURL, nil); err != nil {
+	if p.Client, err = cm.NewClient(p.Config.RepoURL, nil, p.Config.Username, p.Config.Password, p.Config.SkipTlsVerify); err != nil {
 		return errors.Wrapf(err, "Could not create ChartMuseum client (repo-url: %q)", p.Config.RepoURL)
 	}
 

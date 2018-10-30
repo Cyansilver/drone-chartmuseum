@@ -3,35 +3,46 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:660e3d0266aebcc7679c49452061a8e53c862127392f87f3cd099ec4df5e0a04"
   name = "code.gitea.io/git"
   packages = ["."]
+  pruneopts = "UT"
   revision = "3413a6c00a2e83035973370d4249cccc5d3c22d2"
 
 [[projects]]
+  digest = "1:b16fbfbcc20645cb419f78325bb2e85ec729b338e996a228124d68931a6f2a37"
   name = "github.com/BurntSushi/toml"
   packages = ["."]
+  pruneopts = "UT"
   revision = "b26d9c308763d68093482582cea63d69be07a0f0"
   version = "v0.3.0"
 
 [[projects]]
+  digest = "1:b311407991ca82ea46706557aef8d32b56e96c2f95481754b5a5d34a984a3af3"
   name = "github.com/Masterminds/semver"
   packages = ["."]
+  pruneopts = "UT"
   revision = "15d8430ab86497c5c0da827b748823945e1cf1e1"
   version = "v1.4.0"
 
 [[projects]]
+  digest = "1:f033a81755b461d605dd88a4eaaf35542db9b425ee504ef44cef810ff2b0f9d2"
   name = "github.com/Unknwon/com"
   packages = ["."]
+  pruneopts = "UT"
   revision = "28b053d5a2923b87ce8c5a08f3af779894a72758"
   version = "v1"
 
 [[projects]]
+  digest = "1:2cd7915ab26ede7d95b8749e6b1f933f1c6d5398030684e6505940a10f31cfda"
   name = "github.com/ghodss/yaml"
   packages = ["."]
+  pruneopts = "UT"
   revision = "0ca9ea5df5451ffdf184b4428c902747c2c11cd7"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:9ae31ce33b4bab257668963e844d98765b44160be4ee98cafc44637a213e530d"
   name = "github.com/gobwas/glob"
   packages = [
     ".",
@@ -41,73 +52,104 @@
     "syntax/ast",
     "syntax/lexer",
     "util/runes",
-    "util/strings"
+    "util/strings",
   ]
+  pruneopts = "UT"
   revision = "5ccd90ef52e1e632236f7326478d4faa74f99438"
   version = "v0.2.3"
 
 [[projects]]
+  digest = "1:1f2fdc06bc944a03281de80305b1fec2b348ac9a436e6e6fc8ca88251f695b61"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
     "ptypes/any",
-    "ptypes/timestamp"
+    "ptypes/timestamp",
   ]
+  pruneopts = "UT"
   revision = "925541529c1fa6821df4e44ce2723319eb2be768"
   version = "v1.0.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:087f0216a82a3fb86f08ca68cb09fdb9f70020d0aec52f13f22bd00007430797"
+  name = "github.com/honestbee/drone-chartmuseum"
+  packages = [
+    "pkg/cmclient",
+    "pkg/util",
+  ]
+  pruneopts = "UT"
+  revision = "1b6f0580fead0e98ee482d6b2ddb0dafb3d1897f"
+
+[[projects]]
+  branch = "master"
+  digest = "1:1be829409768146451305c0281e84fe9b82d65df47d3ce735445a272734f6b77"
   name = "github.com/mcuadros/go-version"
   packages = ["."]
+  pruneopts = "UT"
   revision = "88e56e02bea1c203c99222c365fa52a69996ccac"
 
 [[projects]]
+  digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
   name = "github.com/pkg/errors"
   packages = ["."]
+  pruneopts = "UT"
   revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
   version = "v0.8.0"
 
 [[projects]]
+  digest = "1:5622116f2c79239f2d25d47b881e14f96a8b8c17b63b8a8326a38ee1a332b007"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
+  pruneopts = "UT"
   revision = "d682213848ed68c0a260ca37d6dd5ace8423f5ba"
   version = "v1.0.4"
 
 [[projects]]
+  digest = "1:b24d38b282bacf9791408a080f606370efa3d364e4b5fd9ba0f7b87786d3b679"
   name = "github.com/urfave/cli"
   packages = ["."]
+  pruneopts = "UT"
   revision = "cfb38830724cc34fedffe9a2a29fb54fa9169cd1"
   version = "v1.20.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:3f3a05ae0b95893d90b9b3b5afdb79a9b3d96e4e36e099d841ae602e4aca0da8"
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
+  pruneopts = "UT"
   revision = "c7dcf104e3a7a1417abc0230cb0d5240d764159d"
 
 [[projects]]
   branch = "master"
+  digest = "1:ad7a8ea578273222bf5cfe0e98b76ac0fe3fc713d856edcae1f61118c01a20aa"
   name = "golang.org/x/sys"
   packages = [
     "unix",
-    "windows"
+    "windows",
   ]
+  pruneopts = "UT"
   revision = "7dca6fe1f43775aa6d1334576870ff63f978f539"
 
 [[projects]]
+  digest = "1:2a81c6e126d36ad027328cffaa4888fc3be40f09dc48028d1f93705b718130b9"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
+  pruneopts = "UT"
   revision = "7f97868eec74b32b0982dd158a51a446d1da7eb5"
   version = "v2.1.1"
 
 [[projects]]
   branch = "master"
+  digest = "1:c65d39b06c4f2ed3dbc6bef30bab902972f1e85ff4adcac25c7344af1f1a5b24"
   name = "k8s.io/apimachinery"
   packages = ["pkg/version"]
+  pruneopts = "UT"
   revision = "e9ff529c66f83aeac6dff90f11ea0c5b7c4d626a"
 
 [[projects]]
+  digest = "1:8800beff14c8ac9d2bc9b7aab36d1bf8db61b5ce94d303f0ae696097e0cdf857"
   name = "k8s.io/helm"
   packages = [
     "pkg/chartutil",
@@ -115,14 +157,24 @@
     "pkg/proto/hapi/chart",
     "pkg/proto/hapi/version",
     "pkg/sympath",
-    "pkg/version"
+    "pkg/version",
   ]
+  pruneopts = "UT"
   revision = "a80231648a1473929271764b920a8e346f6de844"
   version = "v2.8.2"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ea9781a32543a3e30971378b1060be25cbfed00fc2faa47c58af84d38f376ac3"
+  input-imports = [
+    "code.gitea.io/git",
+    "github.com/honestbee/drone-chartmuseum/pkg/cmclient",
+    "github.com/honestbee/drone-chartmuseum/pkg/util",
+    "github.com/pkg/errors",
+    "github.com/sirupsen/logrus",
+    "github.com/urfave/cli",
+    "k8s.io/helm/pkg/chartutil",
+    "k8s.io/helm/pkg/ignore",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

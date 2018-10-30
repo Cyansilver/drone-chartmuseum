@@ -12,7 +12,7 @@ func initApp() *cli.App {
 	app := cli.NewApp()
 	app.Name = "drone-chartmuseum-plugin"
 	app.Usage = "drone plugin to upload charts to chartmuseum server"
-	app.Version = fmt.Sprintf("1.0.0")
+	app.Version = fmt.Sprintf("1.0.1")
 
 	mainFlag := []cli.Flag{
 		cli.StringFlag{
@@ -20,6 +20,18 @@ func initApp() *cli.App {
 			Value:  "",
 			Usage:  "ChartMuseum API base URL",
 			EnvVar: "PLUGIN_REPO_URL,REPO_URL",
+		},
+		cli.StringFlag{
+			Name:   "username,n",
+			Value:  "",
+			Usage:  "Chartmuseum HTTP Basic auth username",
+			EnvVar: "PLUGIN_REPO_USERNAME,REPO_USERNAME",
+		},
+		cli.StringFlag{
+			Name:   "password,x",
+			Value:  "",
+			Usage:  "Chartmuseum HTTP Basic auth password",
+			EnvVar: "PLUGIN_REPO_PASSWORD,REPO_PASSWORD",
 		},
 		cli.StringFlag{
 			Name:   "chart-path,i",
@@ -55,6 +67,11 @@ func initApp() *cli.App {
 			Usage:  "Log level (panic, fatal, error, warn, info, or debug)",
 			EnvVar: "PLUGIN_LOG_LEVEL,LOG_LEVEL",
 		},
+		cli.BoolFlag{
+			Name:   "skip-tls-verify",
+			Usage:  "Skip TLS verify or not",
+			EnvVar: "PLUGIN_SKIP_TLS_VERIFY,SKIP_TLS_VERIFY",
+		},
 	}
 
 	app.Action = cli.ActionFunc(defaultAction)
@@ -74,6 +91,9 @@ func defaultAction(c *cli.Context) error {
 	plugin := Plugin{
 		Config: &Config{
 			RepoURL:          c.String("repo-url"),
+			Username:         c.String("username"),
+			Password:         c.String("password"),
+			SkipTlsVerify:    c.Bool("skip-tls-verify"),
 			ChartsDir:        c.String("charts-dir"),
 			ChartPath:        c.String("chart-path"),
 			PreviousCommitID: c.String("previous-commit"),
